@@ -1,0 +1,61 @@
+<div class="header" style="padding-top: 80px">
+  <div class="container">
+    <h3 class="text-center"> Republica de Panama</h3>
+    <h4 class="text-center"> Municipio de San Miguelito </h4>
+  </div>
+  <hr>
+</div>
+<br>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <p>Importar Archivo</p>
+      <%= form_tag import_nominas_path, multipart: true do %>
+      <%= file_field_tag :file %>
+      <br>
+      <%= submit_tag "Importar" %>
+      <% end %>
+    </div>
+    <div class="col-md-6 text-right">
+       <div class="pull-right range-query">
+        <p>Buscar por Fecha</p>
+        <%= form_tag nominas_path, method: :get do %>
+          <%= text_field_tag 'search[date_from]', @search.date_from %>
+          <%= text_field_tag 'search[date_to]', @search.date_from %>
+          <%= submit_tag 'buscar', class: 'btn search-button' %>'
+        <% end %>
+      </div
+  </div>
+</div>
+<div class="container" style="padding-top: 50px">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Acreedores</th>
+        <th>Id de acreedor</th>
+        <th>Numero de Empleado</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Fecha<th>
+          <th>Pago</th>
+          <th>Id</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @nominas.each do |nomina| %>
+        <tr>
+          <td><%= nomina.acreedor %></td>
+          <td><%= nomina.n1%></td>
+          <td><%= nomina.n2%></td>
+          <td><%= nomina.nombre%></td>
+          <td><%= nomina.apellido%></td>
+          <td><%= nomina.fecha%></td>
+          <td><%= nomina.pago%></td>
+          <td><%= nomina.id_acreedor%></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+

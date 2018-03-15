@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  acreedor: MyString
+  id_acreedor: MyString
+  id_empleado: MyString
+  date_from: 2018-03-13
+  date_to: 2018-03-13
+
+two:
+  acreedor: MyString
+  id_acreedor: MyString
+  id_empleado: MyString
+  date_from: 2018-03-13
+  date_to: 2018-03-13

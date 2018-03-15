@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  acreedor: MyString
+  id_acreedor: MyString
+  fecha: 2018-03-10
+  pago: 9.99
+  pago1: 9.99
+  total: 9.99
+
+two:
+  acreedor: MyString
+  id_acreedor: MyString
+  fecha: 2018-03-10
+  pago: 9.99
+  pago1: 9.99
+  total: 9.99
