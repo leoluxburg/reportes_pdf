@@ -3,10 +3,10 @@ class NominasController < ApplicationController
 
   def index
      # @nominas  = Nomina.all
-     @search = NominaSearch.new(params[:search])
-     @nominas = @search.scope
+     # @search = NominaSearch.new(params[:search])
+     # @nominas = @search.scope
      # @searchit = NominaSearch.new(params[:searchit])
-     # @nominas = Nomina.where("acreedor LIKE ?", "%#{params[:search]}%")
+     @nominas = Nomina.where("acreedor LIKE ?", "%#{params[:search]}%")
 
   end
 

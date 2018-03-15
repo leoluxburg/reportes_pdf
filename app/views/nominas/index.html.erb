@@ -18,16 +18,16 @@
       <% end %>
     </div>
     <div class="col-md-6 text-right">
-       <div class="pull-right range-query">
-        <p>Buscar por Fecha</p>
-        <%= form_tag nominas_path, method: :get do %>
-          <%= text_field_tag 'search[date_from]', @search.date_from %>
-          <%= text_field_tag 'search[date_to]', @search.date_from %>
-          <%= submit_tag 'buscar', class: 'btn search-button' %>'
-        <% end %>
-      </div
+      <p>Acreedor</p>
+      <%= form_tag nominas_path, method: :get do %>
+          <%= text_field_tag :search, params[:search] %>
+        <%= submit_tag 'Filtrar' %>
+      <% end %>
+      <%= link_to "Filtro Avanzada", new_busqueda_path %>
+    </div>
   </div>
 </div>
+<p class="text-center">Detente · Piensa · Actua</p>
 <div class="container" style="padding-top: 50px">
   <table class="table">
     <thead>
