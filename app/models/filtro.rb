@@ -1,12 +1,11 @@
-class Busqueda < ApplicationRecord
-    attr_reader :date_from, :date_to
+class Filtro < ApplicationRecord
 
-  def busqueda_nomina
+  def filtro_nomina
     nominas = Nomina.all
     nominas = nominas.where("acreedor LIKE ?", "%#{acreedor}%") if acreedor.present?
     nominas = nominas.where("n2 LIKE ?", id_acreedor) if id_acreedor.present?
     nominas = nominas.where("n1 LIKE ?", id_empleado) if id_empleado.present?
-    nominas = nominas.where("fecha BETWEEN ? AND ?", date_from, date_to) if date_from.present? and date_to.present?
+    nominas = nominas.where("fecha BETWEEN ? AND ?", fecha, fecha2) if fecha.present? and fecha2.present?
 
     return nominas
 

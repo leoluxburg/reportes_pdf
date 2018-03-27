@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180315021638) do
+ActiveRecord::Schema.define(version: 20180327015728) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "busquedas", force: :cascade do |t|
     t.string   "acreedor"
@@ -18,6 +21,16 @@ ActiveRecord::Schema.define(version: 20180315021638) do
     t.string   "id_empleado"
     t.date     "date_from"
     t.date     "date_to"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "filtros", force: :cascade do |t|
+    t.string   "acreedor"
+    t.string   "id_acreedor"
+    t.string   "id_empleado"
+    t.date     "fecha"
+    t.date     "fecha2"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end

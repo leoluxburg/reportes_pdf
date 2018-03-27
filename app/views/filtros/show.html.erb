@@ -1,8 +1,9 @@
 <div class="header" style="padding-top: 80px">
-  <div class="containe    <h3 class="text-center"> Republica de Panama</h3>
+  <div class="container">
+    <h3 class="text-center"> Republica de Panama</h3>
     <h4 class="text-center"> Municipio de San Miguelito </h4>
+    <hr>
   </div>
-  <hr>
 </div>
 <br>
 <br>
@@ -22,10 +23,13 @@
           <%= text_field_tag :search, params[:search] %>
         <%= submit_tag 'Filtrar' %>
       <% end %>
-      <%= link_to "Filtro Avanzado", new_filtro_path %>
+      <%= link_to "Fitro Avanzado", new_filtro_path %>
     </div>
   </div>
 </div>
+<% if @filtro.filtro_nomina.empty? %>
+  <p> 0 resultados <p>
+<% elsif %>
 <div class="container" style="padding-top: 50px">
   <table class="table">
     <thead>
@@ -36,24 +40,23 @@
         <th>Nombre</th>
         <th>Apellido</th>
         <th>Fecha<th>
-          <th>Pago</th>
-          <th>Id</th>
+        <th>Pago</th>
+        <th>Id</th>
         </tr>
       </thead>
       <tbody>
-        <% @nominas.each do |nomina| %>
+  <% @filtro.filtro_nomina.each do |resultado| %>
         <tr>
-          <td><%= nomina.acreedor %></td>
-          <td><%= nomina.n1%></td>
-          <td><%= nomina.n2%></td>
-          <td><%= nomina.nombre%></td>
-          <td><%= nomina.apellido%></td>
-          <td><%= nomina.fecha%></td>
-          <td><%= nomina.pago%></td>
-          <td><%= nomina.id_acreedor%></td>
+          <td><%= resultado.acreedor %></td>
+          <td><%= resultado.n1%></td>
+          <td><%= resultado.n2%></td>
+          <td><%= resultado.nombre%></td>
+          <td><%= resultado.apellido%></td>
+          <td><%= resultado.fecha%></td>
+          <td><%= resultado.pago%></td>
+          <td><%= resultado.id_acreedor%></td>
         </tr>
         <% end %>
       </tbody>
     </table>
-  </div>
-
+<% end %>

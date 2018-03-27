@@ -1,7 +1,6 @@
 <div class="header" style="padding-top: 80px">
   <div class="container">
-<!--     <%= image_tag("municipio.jpg") %>
- -->    <h3 class="text-center"> Republica de Panama</h3>
+    <h3 class="text-center"> Republica de Panama</h3>
     <h4 class="text-center"> Municipio de San Miguelito </h4>
     <hr>
   </div>
@@ -11,7 +10,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6">
-      <%= simple_form_for @busqueda do |s| %>
+      <%= simple_form_for @filtro do |s| %>
       <div>
         <%= s.label "Acreedor"%>
         <%= s.text_field :acreedor%>
@@ -19,22 +18,22 @@
       <br>
       <div>
         <%= s.label "Id de Acreedor"%>
-        <%= s.text_field :id_acreedor%>
+        <%= s.input :id_acreedor%>
       </div>
       <br>
       <div>
         <%= s.label "ID EMPLEADO"%>
-        <%= s.text_field :id_empleado%>
+        <%= s.input :id_empleado%>
       </div>
       <br>
       <div>
         <%= s.label "Fecha"%>
-        <%= s.input :date_from %>
+        <%= s.input :fecha%>
       </div>
       <br>
       <div>
         <%= s.label "Fecha"%>
-        <%= s.input :date_to %>
+        <%= s.input :fecha2 %>
       </div>
       <br>
       <br>
@@ -42,8 +41,7 @@
       <% end %>
     </div>
   </div>
-
-</div>
+  </div>
 <div class="container" style="padding-top: 50px">
   <table class="table">
     <thead>
@@ -59,3 +57,4 @@
         </tr>
       </thead>
 </div>
+

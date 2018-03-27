@@ -1,3 +1,4 @@
+
 class NominasController < ApplicationController
   attr_accessor :acreedor, :n1, :n2, :nombre, :apellido, :fecha, :pago, :id_acreedor
 
@@ -5,7 +6,6 @@ class NominasController < ApplicationController
      # @nominas  = Nomina.all
      # @search = NominaSearch.new(params[:search])
      # @nominas = @search.scope
-     # @searchit = NominaSearch.new(params[:searchit])
      @nominas = Nomina.where("acreedor LIKE ?", "%#{params[:search]}%")
 
   end
