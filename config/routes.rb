@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  resources :busquedas
+
+  devise_for :users
+  # resources :busquedas
 
   resources :filtros
 
