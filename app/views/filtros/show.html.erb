@@ -18,23 +18,26 @@
       <% end %>
     </div>
     <div class="col-md-6 text-right">
-       <%= link_to destroy_user_session_path, method: :delete do %>
-      <i class=""></i>  <%= t(".sign_out", default: "Log out") %>
-      <% end %>
-      <p>Acreedor</p>
-      <%= form_tag nominas_path, method: :get do %>
-          <%= text_field_tag :search, params[:search] %>
-        <%= submit_tag 'Filtrar' %>
-      <% end %>
-      <%= link_to "Fitro Avanzado", new_filtro_path %>
-    </div>
-  </div>
+     <%= link_to destroy_user_session_path, method: :delete do %>
+     <i class=""></i>  <%= t(".sign_out", default: "Log out") %>
+     <% end %>
+     <p>Acreedor</p>
+     <%= form_tag nominas_path, method: :get do %>
+     <%= text_field_tag :search, params[:search] %>
+     <%= submit_tag 'Filtrar' %>
+     <% end %>
+     <%= link_to "Fitro Avanzado", new_filtro_path %>
+   </div>
+ </div>
 </div>
 <% if @filtro.filtro_nomina.empty? %>
-  <p> 0 resultados <p>
+<div class="container">
+  <p> 0 resultados </p>
+</div>
 <% elsif %>
 <div class="container" style="padding-top: 50px">
   <table class="table">
+<h5>Total : <%= @filtro.total_en_quicenas %></h5>
     <thead>
       <tr>
         <th>Acreedores</th>
@@ -43,24 +46,29 @@
         <th>Nombre</th>
         <th>Apellido</th>
         <th>Fecha<th>
-        <th>Pago</th>
-        <th>Id</th>
+          <th>Pago</th>
+          <th>Id</th>
+          <th>Cheque</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
-  <% @filtro.filtro_nomina.each do |resultado| %>
+        <% @filtro.filtro_nomina.each do |resultado| %>
         <tr>
-          <td><%= resultado.acreedor %></td>
-          <td><%= resultado.n1%></td>
-          <td><%= resultado.n2%></td>
-          <td><%= resultado.nombre%></td>
+          <td> <p><%= resultado.acreedor %></p></td>
+          <td><p><%= resultado.n1%></p></td>
+          <td><p><%= resultado.n2%></p></td>
+          <td><p><%= resultado.nombre%></p></td>
           <td><%= resultado.apellido%></td>
-          <td><%= resultado.fecha%></td>
+          <td><p><%= resultado.fecha%></p></td>
           <td></td>
-          <td><%= resultado.pago%></td>
-          <td><%= resultado.id_acreedor%></td>
+          <td><p><%= resultado.pago%></p></td>
+          <td><p><%= resultado.id_acreedor%></p></td>
+          <td><%= resultado.cheque %></td>
+          <td><%= link_to "Numero de cheque", edit_nomina_path(resultado)%></td>
         </tr>
         <% end %>
       </tbody>
     </table>
-<% end %>
+    <% end %>
+</div>

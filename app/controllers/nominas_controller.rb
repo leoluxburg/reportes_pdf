@@ -10,9 +10,25 @@ class NominasController < ApplicationController
 
   end
 
+  def edit
+    @nomina = Nomina.find(params[:id])
+  end
+
+
+  def update
+    @nomina = Nomina.find(params[:id])
+    @nomina.update(rider_params)
+    redirect_to root_path
+
+  end
+
   def import
     Nomina.import(params[:file])
     redirect_to root_url, notice: "Imported"
+  end
+
+   def rider_params
+    params.require(:nomina).permit(:cheque)
   end
 
 end

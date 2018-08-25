@@ -1,0 +1,68 @@
+<div class="header" style="padding-top: 80px">
+  <div class="container">
+    <h3 class="text-center"> Republica de Panama</h3>
+    <h4 class="text-center"> Municipio de San Miguelito </h4>
+    <h5 class="text-center">Periodo <%= @data.fecha %> al <%= @data.fecha2 %></h5>
+    <hr>
+  </div>
+</div>
+<br>
+<br>
+<div class="container">
+<div class="row">
+    <div class="col-md-6">
+    <p> Proveedor: <%= @data.filtro_nomina.first.acreedor %> </p>
+    <br>
+     <p>Clave: <%= @data.filtro_nomina.first.n1 %> </p>
+    </div>
+    <div class="col-md-6 text-right">
+    <p>Numero de cheque: <%= @data.filtro_nomina.first.cheque %> </p>
+   </div>
+ </div>
+</div>
+<% if @data.filtro_nomina.empty? %>
+<div class="container">
+  <p> 0 resultados </p>
+</div>
+<% elsif %>
+<div class="container" style="padding-top: 50px">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Posicion</th>
+        <th>Cedula</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Fecha<th>
+        <th>Pago</th>
+        <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @data.filtro_nomina.each do |resultado| %>
+        <tr>
+          <td> <p><%= resultado.n2 %></p></td>
+          <td></td>
+          <td><p><%= resultado.nombre%></p></td>
+          <td><%= resultado.apellido%></td>
+          <td><p><%= resultado.fecha%></p></td>
+          <td></td>
+          <td><p><%= resultado.pago%></p></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <% end %>
+    <div class="col-md-6">
+
+    </div>
+     <div class="col-md-6 text-right">
+      <p>Total : <%= @data.total_pagos %></p>
+    </div>
+</div>
+<div class="container">
+  <p>Recivido por: __________________________________</p>
+  <br>
+  <br>
+  <p>Recivido por: __________________________________</p>
+</div>

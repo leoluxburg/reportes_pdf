@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180327063858) do
+ActiveRecord::Schema.define(version: 20180627171048) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "assistances", force: :cascade do |t|
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "employee_id"
+    t.integer  "shop_id"
+    t.datetime "checkin"
+    t.index ["employee_id"], name: "index_assistances_on_employee_id", using: :btree
+    t.index ["shop_id"], name: "index_assistances_on_shop_id", using: :btree
+  end
 
   create_table "busquedas", force: :cascade do |t|
     t.string   "acreedor"
@@ -25,6 +35,24 @@ ActiveRecord::Schema.define(version: 20180327063858) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "employee_types", force: :cascade do |t|
+    t.string   "names"
+    t.float    "salary"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "employees", force: :cascade do |t|
+    t.string   "names"
+    t.string   "telephone"
+    t.string   "address"
+    t.date     "employent_date"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "employee_type_id"
+    t.index ["employee_type_id"], name: "index_employees_on_employee_type_id", using: :btree
+  end
+
   create_table "filtros", force: :cascade do |t|
     t.string   "acreedor"
     t.string   "id_acreedor"
@@ -33,6 +61,7 @@ ActiveRecord::Schema.define(version: 20180327063858) do
     t.date     "fecha2"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.string   "cheque"
   end
 
   create_table "models", force: :cascade do |t|
@@ -63,6 +92,7 @@ ActiveRecord::Schema.define(version: 20180327063858) do
     t.string   "id_acreedor"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.string   "cheque"
   end
 
   create_table "reportes", force: :cascade do |t|
@@ -74,6 +104,14 @@ ActiveRecord::Schema.define(version: 20180327063858) do
     t.decimal  "total"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "shops", force: :cascade do |t|
+    t.string   "names"
+    t.string   "address"
+    t.string   "phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -93,4 +131,7 @@ ActiveRecord::Schema.define(version: 20180327063858) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "assistances", "employees"
+  add_foreign_key "assistances", "shops"
+  add_foreign_key "employees", "employee_types"
 end

@@ -1,4 +1,5 @@
 class FiltrosController < ApplicationController
+  before_action :find_filtro, only: [ :reporte_cheque ]
   def new
     @filtro = Filtro.new
   end
@@ -18,9 +19,26 @@ class FiltrosController < ApplicationController
     @filtro = Filtro.find(params[:id])
   end
 
+  def reporte_cheque
+    @data = @filtro
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = FiltroPdf.new(@data)
+        send_data pdf.render, filename: "reporte_cheque#{@data.id}.pdf",
+                              type: "application/pdf",
+                              disposition: "inline"
+      end
+    end
+  end
+
   private
 
   def filtro_params
-    params.require(:filtro).permit(:acreedor, :id_acreedor, :id_empleado, :fecha, :fecha2)
+    params.require(:filtro).permit(:acreedor, :id_acreedor, :id_empleado,:cheque, :fecha, :fecha2)
+  end
+
+  def find_filtro
+    @filtro = Filtro.find(params[:id])
   end
 end
